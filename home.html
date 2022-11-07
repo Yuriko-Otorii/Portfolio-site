@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Home page</title>
+  </head>
+  <body class="home-body" id="page-top">
+    <div class="header-container">
+      <div class="title-container">
+        <div class="name-container">
+          <h1 class="full-name">Yuriko Otorii</h1>
+          <a href="https://github.com/Yuriko-Otorii" target="_blank" ><i class="fa-brands fa-github fa-lg"></i></a>
+        </div>
+        <h4 class="occupation">Front-end developer</h4>
+      </div>
+      <nav>
+        <a href="#about-me"><p class="nav-item">About me</p></a>
+        <a href="#projects"><p class="nav-item">Projects</p></a>
+        <a href="#resume"><p class="nav-item">Resume</p></a>
+        <a href="#contacts"><p class="nav-item">Contact</p></a>
+      </nav>
+      <a href="#about-me" class="arrow-anchor">
+        <i class="fa-solid fa-arrow-down fa-2xl"></i>
+      </a>
+    </div>
+
+    <main class="section-container">
+      <section class="about-me" id="about-me">
+        <h1>About me</h1>
+        <div class="section-contents">
+          <p>
+            A COOP student who is eager to work as a front-end developer.
+            Passionate about making people's lives or works easier through technology. Love
+            to work with other developers to share interesting ideas with other developers.
+          </p>
+        </div>
+      </section>
+
+      <section class="projects" id="projects">
+        <h1>Projects</h1>
+        <div class="section-contents">
+          <ul class="project-list">
+            <li class="project-one">
+              <div class="project-title">-- Project 1 --</div>
+              <p class="project-description">HTML, SCSS, Vanilla js</p>
+              <div class="project-img-container">
+                <a href="https://bookmark-app-theta.vercel.app/Home">
+                  <p class="ptoject-title">Bookmark App</p>
+                </a>
+              </div>
+            </li>
+            <li class="project-two">
+              <p class="project-title">-- Project 2 --</p>
+              <p class="project-description">React App</p>
+              <div class="project-img-container">
+                <a href="https://bookmark-app-theta.vercel.app/Home">
+                  <p class="ptoject-title">App</p>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="resume" id="resume">
+        <h1>Resume</h1>
+        <div class="section-contents">
+          <img
+            class="resume-img"
+            src="./images/Resume.png"
+            alt="Resume image"
+          />
+        </div>
+        <!-- Resume modal -->
+        <div class="resume-modal-container">
+          <img
+            class="modal-resume-img"
+            src="./images/Resume.png"
+            alt="Resume image"
+          />
+        </div>
+      </section>
+
+      <section class="contact" id="contacts">
+        <h1>Contact</h1>
+        <div class="section-contents">
+          <form action="">
+            <p>Let's chat on video call or grab a coffee.</p>
+            <table>
+              <tr>
+                <th><label for="fName">First name</label></th>
+                <td>
+                  <input type="text" id="fName" placeholder="First name" required/>
+                </td>
+              </tr>
+              <tr>
+                <th><label for="lName">Last name</label></th>
+                <td>
+                  <input type="text" id="lName" placeholder="Last name" required/>
+                </td>
+              </tr>
+              <tr>
+                <th><label for="fName">Email</label></th>
+                <td><input type="text" id="fName" placeholder="Email" required/></td>
+              </tr>
+              <tr>
+                <th><label for="fName">Text</label></th>
+                <td><textarea name="" id="textarea" rows="6"></textarea></td>
+              </tr>
+            </table>
+            <button class="send-btn">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    
+    <a href="#page-top">
+      <div class="home-balloon-wrapper">
+        <div class="home-balloon-body"></div>
+        <div class="home-balloon-tail"></div>
+        <div class="home-balloon-string"></div>
+      </div>
+    </a>    
+
+    <footer>
+      <p>&copy;2022 Yuriko Otorii</p>
+    </footer>
+
+    <script src="./home.js"></script>
+  </body>
+</html>
+
+<!-- https://p5aholic.me/ -->
+
+<!-- https://www.onesite-web.com/gsap-scrolltrigger/ -->
+
+<!-- http://testdon.web.fc2.com/gakusyuu_sankou/javascript/multi_scroll_bg/multi_scroll.html -->

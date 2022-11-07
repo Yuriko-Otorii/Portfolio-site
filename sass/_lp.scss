@@ -1,0 +1,278 @@
+@use './config/mixin' as *;
+@use './config/variables' as *;
+@use './config/common-setting' as *;
+
+body{
+    font-family: $home-font;
+    color: $dark-gray;
+    position: relative;
+    .cursor{        
+        z-index: 1001;
+        position: absolute;
+        top: 0;
+        left: 0; 
+        transform: translate(-50%,-50%);
+    }
+    .balloon-wrapper{
+        width: 100vw;
+        height: 100vh;
+        @include flexColumnCenter();
+        .balloon-body{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid $main-color;
+            position: relative;
+            cursor: pointer;
+            .eyes-wrapper{
+                display: flex;
+                position: absolute;
+                top: 45%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                .left-eye-outline{
+                    @include eyesOutline();
+                    .left-eyeball{
+                        @include eyeBalls();
+                        left: 39%;
+                        z-index: 1000;
+                        transition: transform linear .2s;
+                    }
+                    .changed-left-eyeball{
+                        visibility: hidden;
+                        width: 22px;
+                        height: 1px;
+                        background-color: $dark-gray;
+                        border: 1px solid $dark-gray;
+                        position: absolute;
+                        top: 45%;
+                        left: 30%;
+                        &::after{
+                            @include changed-eyeBalls(45deg, -7.5px, 20%);
+                        }
+                        &::before{
+                            @include changed-eyeBalls(-45deg, 5.5px, 20%);
+                        }
+                    }
+                }
+                .right-eye-outline{
+                    @include eyesOutline();
+                    .right-eyeball{
+                        @include eyeBalls();
+                        left: 5%;
+                        z-index: 1000;
+                        transition: transform linear .2s;
+                    }
+                    .changed-right-eyeball{
+                        visibility: hidden;
+                        width: 22px;
+                        height: 1px;
+                        background-color: $dark-gray;
+                        border: 1px solid $dark-gray;
+                        position: absolute;
+                        top: 45%;
+                        left: 10%;
+                        &::after{
+                            @include changed-eyeBalls(-45deg, -7.5px, -22%);
+                        }
+                        &::before{
+                            @include changed-eyeBalls(45deg, 5.5px, -22%);
+                        }                
+                    }
+                }
+            }
+        }
+        .balloon-tail{
+            width: 20px;
+            height: 20px;
+            opacity: .9;
+            background-color: $main-color;
+            border: 2px solid $main-color;   
+            clip-path: polygon(0% 100%, 20% 0%, 80% 0%, 100% 100%);
+        }
+        .balloon-string{
+            height: 60px;
+            background-color: $main-color;
+            border: 1px solid $main-color;
+        }
+    }
+    
+    .bubble-wrapper{
+        position: absolute;
+        top: 10%;
+        right: 10%;
+        .bubble{
+            width: 100px;
+            height: 70px;
+            border: 2px solid $dark-gray;
+            border-radius: 50%;
+            position: relative;
+            @include flexCenter();
+            .bubble-text{
+                font-size: 1.3rem;
+            }
+        }
+        .small-bubbles{
+            width: 22px;
+            height: 22px;
+            border: 2px solid $dark-gray;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -30%;
+            left: 10%;
+            &::after{
+                content: '';
+                width: 10px;
+                height: 10px;
+                border: 2px solid $dark-gray;
+                border-radius: 50%;
+                position: absolute;
+                bottom: -100%;
+                left: -60%;
+            }
+        }
+    }  
+}
+
+
+@media screen and (min-width: 768px) {
+    body{
+        .balloon-wrapper{
+            .balloon-body{
+                .eyes-wrapper{
+                    .left-eye-outline{
+                        .left-eyeball{
+                        }
+                        .changed-left-eyeball{
+                            &::after{
+                                @include changed-eyeBalls(45deg, -7.5px, 22%);
+                            }
+                            &::before{
+                                @include changed-eyeBalls(-45deg, 5.5px, 22%);
+                            }
+                        }
+                    }
+                    .right-eye-outline{
+                        .right-eyeball{
+                        }
+                        .changed-right-eyeball{
+                            &::after{
+                                @include changed-eyeBalls(-45deg, -7.5px, -22%);
+                            }
+                            &::before{
+                                @include changed-eyeBalls(45deg, 5.5px, -22%);
+                            }                
+                        }
+                    }
+                }
+            }
+        }
+        .bubble-wrapper{
+            top: 10%;
+            right: 25%;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    body{
+        .balloon-wrapper{
+            .balloon-body{
+                width: 200px;
+                height: 200px;
+                .eyes-wrapper{
+                    top: 45%;                    
+                    transform: translate(-50%, -50%);
+                    .left-eye-outline{
+                        width: 55px;
+                        height: 65px;
+                        .left-eyeball{
+                            width: 25px;
+                            height: 25px;
+                            left: 45%;
+                        }
+                        .changed-left-eyeball{
+                            width: 35px;
+                            top: 45%;
+                            left: 23%;
+                            border-width: 2px;
+                            &::after{
+                                @include changed-eyeBalls(45deg, -11px, 30%);
+                                width: 25px;
+                                border-width: 2px;
+                            }
+                            &::before{
+                                @include changed-eyeBalls(-45deg, 7px, 30%);
+                                width: 25px;
+                                border-width: 2px;
+                            }
+                        }
+                    }
+                    .right-eye-outline{
+                        width: 55px;
+                        height: 65px;
+                        .right-eyeball{
+                            width: 25px;
+                            height: 25px;
+                            left: 8%;
+                        }
+                        .changed-right-eyeball{
+                            width: 35px;
+                            top: 45%;
+                            left: 13%;
+                            border-width: 2px;
+                            &::after{
+                                @include changed-eyeBalls(-45deg, -11px, -30%);
+                                width: 25px;
+                                border-width: 2px;
+                            }
+                            &::before{
+                                @include changed-eyeBalls(45deg, 7px, -30%);
+                                width: 25px;                            
+                                border-width: 2px;
+                            }
+                        }
+                    }
+                }
+            }
+            .balloon-tail{
+                width: 30px;
+                height: 30px;
+            }
+            .balloon-string{
+                height: 100px;
+            }
+        }
+
+
+        .bubble-wrapper{
+            top: 5%;
+            right: 25%;
+            .bubble{
+                width: 150px;
+                height: 100px;
+                .bubble-text{
+                    font-size: 2rem;
+                }
+            }
+            .small-bubbles{
+                width: 30px;
+                height: 30px;
+                bottom: -15%;
+                left: -5%;
+                &::after{
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    border: 2px solid $dark-gray;
+                    border-radius: 50%;
+                    position: absolute;
+                    bottom: -90%;
+                    left: -60%;
+                }
+            }
+        }
+    }
+
+}

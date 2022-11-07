@@ -1,0 +1,719 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Poor Story", cursive;
+  color: #667b87;
+  position: relative;
+}
+body .cursor {
+  z-index: 1001;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+body .balloon-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body .balloon-wrapper .balloon-body {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid #72DDF7;
+  position: relative;
+  cursor: pointer;
+}
+body .balloon-wrapper .balloon-body .eyes-wrapper {
+  display: flex;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline {
+  width: 40px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid #DDDDDD;
+  position: relative;
+}
+body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline .left-eyeball {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #667b87;
+  position: absolute;
+  top: 20%;
+  left: 39%;
+  z-index: 1000;
+  transition: transform linear 0.2s;
+}
+body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline .changed-left-eyeball {
+  visibility: hidden;
+  width: 22px;
+  height: 1px;
+  background-color: #667b87;
+  border: 1px solid #667b87;
+  position: absolute;
+  top: 45%;
+  left: 30%;
+}
+body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline .changed-left-eyeball::after {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  background-color: #667b87;
+  border: 1px solid #667b87;
+  transform: rotate(45deg);
+  position: absolute;
+  top: -7.5px;
+  left: 20%;
+}
+body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline .changed-left-eyeball::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  background-color: #667b87;
+  border: 1px solid #667b87;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 5.5px;
+  left: 20%;
+}
+body .balloon-wrapper .balloon-body .eyes-wrapper .right-eye-outline {
+  width: 40px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid #DDDDDD;
+  position: relative;
+}
+body .balloon-wrapper .balloon-body .eyes-wrapper .right-eye-outline .right-eyeball {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #667b87;
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  z-index: 1000;
+  transition: transform linear 0.2s;
+}
+body .balloon-wrapper .balloon-body .eyes-wrapper .right-eye-outline .changed-right-eyeball {
+  visibility: hidden;
+  width: 22px;
+  height: 1px;
+  background-color: #667b87;
+  border: 1px solid #667b87;
+  position: absolute;
+  top: 45%;
+  left: 10%;
+}
+body .balloon-wrapper .balloon-body .eyes-wrapper .right-eye-outline .changed-right-eyeball::after {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  background-color: #667b87;
+  border: 1px solid #667b87;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: -7.5px;
+  left: -22%;
+}
+body .balloon-wrapper .balloon-body .eyes-wrapper .right-eye-outline .changed-right-eyeball::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  background-color: #667b87;
+  border: 1px solid #667b87;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 5.5px;
+  left: -22%;
+}
+body .balloon-wrapper .balloon-tail {
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+  background-color: #72DDF7;
+  border: 2px solid #72DDF7;
+  clip-path: polygon(0% 100%, 20% 0%, 80% 0%, 100% 100%);
+}
+body .balloon-wrapper .balloon-string {
+  height: 60px;
+  background-color: #72DDF7;
+  border: 1px solid #72DDF7;
+}
+body .bubble-wrapper {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+body .bubble-wrapper .bubble {
+  width: 100px;
+  height: 70px;
+  border: 2px solid #667b87;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .bubble-wrapper .bubble .bubble-text {
+  font-size: 1.3rem;
+}
+body .bubble-wrapper .small-bubbles {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #667b87;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -30%;
+  left: 10%;
+}
+body .bubble-wrapper .small-bubbles::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 2px solid #667b87;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -100%;
+  left: -60%;
+}
+
+@media screen and (min-width: 768px) {
+  body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline .changed-left-eyeball::after {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    background-color: #667b87;
+    border: 1px solid #667b87;
+    transform: rotate(45deg);
+    position: absolute;
+    top: -7.5px;
+    left: 22%;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline .changed-left-eyeball::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    background-color: #667b87;
+    border: 1px solid #667b87;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 5.5px;
+    left: 22%;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .right-eye-outline .changed-right-eyeball::after {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    background-color: #667b87;
+    border: 1px solid #667b87;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: -7.5px;
+    left: -22%;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .right-eye-outline .changed-right-eyeball::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    background-color: #667b87;
+    border: 1px solid #667b87;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 5.5px;
+    left: -22%;
+  }
+  body .bubble-wrapper {
+    top: 10%;
+    right: 25%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  body .balloon-wrapper .balloon-body {
+    width: 200px;
+    height: 200px;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper {
+    top: 45%;
+    transform: translate(-50%, -50%);
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline {
+    width: 55px;
+    height: 65px;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline .left-eyeball {
+    width: 25px;
+    height: 25px;
+    left: 45%;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline .changed-left-eyeball {
+    width: 35px;
+    top: 45%;
+    left: 23%;
+    border-width: 2px;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline .changed-left-eyeball::after {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    background-color: #667b87;
+    border: 1px solid #667b87;
+    transform: rotate(45deg);
+    position: absolute;
+    top: -11px;
+    left: 30%;
+    width: 25px;
+    border-width: 2px;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline .changed-left-eyeball::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    background-color: #667b87;
+    border: 1px solid #667b87;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 7px;
+    left: 30%;
+    width: 25px;
+    border-width: 2px;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .right-eye-outline {
+    width: 55px;
+    height: 65px;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .right-eye-outline .right-eyeball {
+    width: 25px;
+    height: 25px;
+    left: 8%;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .right-eye-outline .changed-right-eyeball {
+    width: 35px;
+    top: 45%;
+    left: 13%;
+    border-width: 2px;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .right-eye-outline .changed-right-eyeball::after {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    background-color: #667b87;
+    border: 1px solid #667b87;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: -11px;
+    left: -30%;
+    width: 25px;
+    border-width: 2px;
+  }
+  body .balloon-wrapper .balloon-body .eyes-wrapper .right-eye-outline .changed-right-eyeball::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    background-color: #667b87;
+    border: 1px solid #667b87;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 7px;
+    left: -30%;
+    width: 25px;
+    border-width: 2px;
+  }
+  body .balloon-wrapper .balloon-tail {
+    width: 30px;
+    height: 30px;
+  }
+  body .balloon-wrapper .balloon-string {
+    height: 100px;
+  }
+  body .bubble-wrapper {
+    top: 5%;
+    right: 25%;
+  }
+  body .bubble-wrapper .bubble {
+    width: 150px;
+    height: 100px;
+  }
+  body .bubble-wrapper .bubble .bubble-text {
+    font-size: 2rem;
+  }
+  body .bubble-wrapper .small-bubbles {
+    width: 30px;
+    height: 30px;
+    bottom: -15%;
+    left: -5%;
+  }
+  body .bubble-wrapper .small-bubbles::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border: 2px solid #667b87;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -90%;
+    left: -60%;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.home-body {
+  color: white;
+  height: auto;
+  font-family: "Poor Story", cursive;
+  position: relative;
+  backdrop-filter: blur(2.5px);
+  background-image: url(../images/blue-sky.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.home-body .header-container {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home-body .header-container .title-container {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.home-body .header-container .title-container .name-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: baseline;
+}
+.home-body .header-container .title-container .name-container .full-name {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+.home-body .header-container .title-container .name-container .fa-github {
+  font-family: "Font Awesome 6 Brands";
+  margin-left: 0.8rem;
+  font-size: 2rem;
+  color: white;
+}
+.home-body .header-container .title-container .occupation {
+  font-size: 1.5rem;
+}
+.home-body .header-container .title-container .fa-arrow-down {
+  margin-top: 15rem;
+}
+.home-body .header-container nav {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+  align-items: center;
+  text-align: end;
+  line-height: 2;
+  cursor: pointer;
+}
+.home-body .header-container nav .nav-item {
+  color: white;
+}
+.home-body .header-container nav .nav-item:hover {
+  transform: scale(1.2);
+}
+.home-body .header-container .arrow-anchor {
+  color: white;
+}
+.home-body .header-container .arrow-anchor .fa-arrow-down {
+  animation: floating 1s infinite ease-in-out 0.8s alternate;
+  transition: 1.5s ease-in-out;
+}
+.home-body .section-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poor Story", cursive;
+  padding: 1rem;
+  position: relative;
+}
+.home-body .section-container section {
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 1rem auto 2rem;
+}
+.home-body .section-container section h1 {
+  margin: 2rem auto 1rem;
+}
+.home-body .section-container section .section-contents {
+  background-color: rgba(221, 221, 221, 0.3882352941);
+  padding: 1rem;
+  border-radius: 10px;
+}
+.home-body .section-container .about-me .section-contents {
+  padding: 2rem 2.5rem;
+}
+.home-body .section-container .projects .project-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+.home-body .section-container .projects .section-contents {
+  position: relative;
+}
+.home-body .section-container .projects .section-contents .project-list {
+  list-style: none;
+}
+.home-body .section-container .projects .project-img-container {
+  width: 22rem;
+  height: 15rem;
+  background-color: white;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-body .section-container .projects .project-img-container a {
+  color: black;
+}
+.home-body .section-container .resume .resume-img {
+  cursor: pointer;
+  width: 70%;
+}
+.home-body .section-container .resume .resume-img:hover {
+  transform: scale(1.03);
+}
+.home-body .section-container .resume .resume-modal-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.25s ease-out;
+}
+.home-body .section-container .resume .resume-modal-container .modal-resume-img {
+  position: absolute;
+  max-width: 80%;
+  max-height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0;
+  transition: 0.5s ease-out;
+}
+.home-body .section-container .resume .show {
+  opacity: 1;
+}
+.home-body .section-container .contact form p {
+  padding: 1rem 2rem;
+}
+.home-body .section-container .contact table {
+  margin: 1rem auto;
+  width: 100%;
+}
+.home-body .section-container .contact table th {
+  width: 30%;
+}
+.home-body .section-container .contact table td {
+  padding: 0.2rem;
+  width: 70%;
+}
+.home-body .section-container .contact table td input {
+  padding: 0.3rem;
+  width: 90%;
+  font-family: "Poor Story", cursive;
+}
+.home-body .section-container .contact .send-btn {
+  font-family: "Poor Story", cursive;
+  font-size: 1.4rem;
+  padding: 0.2rem 2rem;
+  color: white;
+  background-color: #667b87;
+  border: 1.5px solid #DDDDDD;
+  border-radius: 10px;
+  position: relative;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.home-body .section-container .contact .send-btn:hover {
+  transform: scale(1.1);
+}
+.home-body .home-balloon-wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 5%;
+  opacity: 0.7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home-body .home-balloon-wrapper:hover {
+  opacity: 1;
+}
+.home-body .home-balloon-wrapper .home-balloon-body {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #72DDF7;
+  border: 2px solid #72DDF7;
+  position: relative;
+  cursor: pointer;
+}
+.home-body .home-balloon-wrapper .home-balloon-tail {
+  width: 7px;
+  height: 7px;
+  opacity: 0.9;
+  background-color: #72DDF7;
+  border: 2px solid #72DDF7;
+  clip-path: polygon(0% 100%, 20% 0%, 80% 0%, 100% 100%);
+}
+.home-body .home-balloon-wrapper .home-balloon-string {
+  height: 15px;
+  background-color: #72DDF7;
+  border: 1px solid #72DDF7;
+}
+.home-body footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -7px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@media screen and (min-width: 768px) {
+  .home-body .header-container .title-container .name-container .full-name {
+    font-size: 4.5rem;
+  }
+  .home-body .header-container .title-container .name-container .fa-github {
+    font-size: 2.5rem;
+  }
+  .home-body .header-container .title-container .occupation {
+    font-size: 2rem;
+  }
+  .home-body .header-container nav {
+    font-size: 1.5rem;
+  }
+  .home-body .section-container {
+    padding: 1rem 5rem;
+  }
+  .home-body .section-container section h1 {
+    font-size: 2.3rem;
+  }
+  .home-body .section-container section .section-contents {
+    font-size: 1.4rem;
+  }
+  .home-body .section-container .projects .section-contents {
+    padding: 1rem 8rem;
+  }
+  .home-body .section-container .resume .resume-img {
+    width: 50%;
+  }
+  .home-body .section-container .contact form p {
+    padding: 1rem 7rem;
+  }
+  .home-body .section-container .contact table {
+    margin: 1rem auto;
+    width: 80%;
+  }
+  .home-body .section-container .contact table th {
+    width: 30%;
+  }
+  .home-body .section-container .contact table td {
+    padding: 0.2rem;
+    width: 70%;
+  }
+  .home-body .section-container .contact table td input {
+    padding: 0.3rem;
+    width: 90%;
+    font-family: "Poor Story", cursive;
+  }
+  .home-body .section-container .contact table td textarea {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .home-body .header-container .title-container .name-container .full-name {
+    font-size: 4.5rem;
+  }
+  .home-body .header-container .title-container .name-container .fa-github {
+    font-size: 2.5rem;
+  }
+  .home-body .header-container .title-container .occupation {
+    font-size: 2.3rem;
+  }
+  .home-body .header-container nav {
+    font-size: 1.7rem;
+  }
+  .home-body .section-container {
+    padding: 1rem 15rem;
+  }
+  .home-body .section-container section h1 {
+    font-size: 2.3rem;
+  }
+  .home-body .section-container section .section-contents {
+    font-size: 1.4rem;
+  }
+  .home-body .section-container .projects .section-contents {
+    padding: 1rem 13rem;
+  }
+  .home-body .section-container .resume .resume-img {
+    width: 50%;
+  }
+  .home-body .section-container .contact form {
+    padding: 1rem 5rem;
+  }
+  .home-body .section-container .contact table {
+    margin: 1rem auto;
+    width: 80%;
+  }
+  .home-body .section-container .contact table th {
+    width: 30%;
+  }
+  .home-body .section-container .contact table td {
+    padding: 0.2rem;
+    width: 70%;
+  }
+  .home-body .section-container .contact table td input {
+    padding: 0.3rem;
+    width: 90%;
+    font-family: "Poor Story", cursive;
+  }
+  .home-body .section-container .contact table td textarea {
+    width: 90%;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

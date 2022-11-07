@@ -1,0 +1,384 @@
+@use './config/mixin' as *;
+@use './config/variables' as *;
+@use './config/common-setting' as *;
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+.home-body{
+    color: white;
+    height: auto;
+    font-family: $home-font;
+    position: relative;
+    backdrop-filter: blur(2.5px);
+    background: {
+        image: url(../images/blue-sky.jpg);
+        size: cover;
+        repeat: no-repeat;
+        attachment: fixed;
+    }
+    .header-container{
+        height: 100vh;
+        position: relative;
+        @include flexColumnCenter();
+        .title-container{ 
+            text-align: center;  
+            margin-bottom: 3rem;
+            .name-container{
+                @include flexCenter();
+                align-items: baseline;
+                .full-name{
+                    font-size: 3.5rem;
+                    font-weight: bold;
+                }
+                .fa-github{
+                    font-family: "Font Awesome 6 Brands";
+                    margin-left: .8rem;     
+                    font-size: 2rem;   
+                    color: white;            
+                }
+            }
+            .occupation{
+                font-size: 1.5rem;
+            }
+            .fa-arrow-down{
+                margin-top: 15rem;
+            }
+        }
+        nav{
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 4rem;
+            align-items: center;
+            text-align: end;
+            line-height: 2;
+            cursor: pointer;
+            .nav-item{
+                color: white;
+                &:hover{
+                    transform: scale(1.2);
+                }
+            }
+        }
+        .arrow-anchor{
+            color: white;
+            .fa-arrow-down{
+                animation: floating 1s infinite ease-in-out .8s alternate;
+                transition: 1.5s ease-in-out;
+            }
+        }
+    }
+    .section-container{
+        @include flexColumnCenter();
+        font-family: $home-font;
+        padding: 1rem;        
+        position: relative;
+        section{
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 1rem auto 2rem;
+            h1{
+                margin: 2rem auto 1rem;
+            }
+            .section-contents{
+                background-color: #dddddd63;
+                padding: 1rem;
+                border-radius: 10px;
+            }
+        }
+        .about-me{
+            .section-contents{
+                padding: 2rem 2.5rem;
+            }
+        }
+        .projects{
+            .project-title{
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+            .section-contents{
+                position: relative;
+                .project-list{
+                    list-style: none;
+                }
+            }
+            .project-img-container{
+                width: 22rem;
+                height: 15rem;
+                background-color: white;
+                margin-bottom: 2rem;
+                @include flexCenter();
+                a{
+                    color: black;
+                }
+            }
+        }
+        .resume{
+            .resume-img{
+                cursor: pointer;
+                width: 70%;
+                &:hover{
+                    transform: scale(1.03);
+                }
+            }
+            .resume-modal-container{
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background: rgba(0,0,0,0.5);
+                pointer-events: none;
+                opacity: 0;
+                transition: 0.25s ease-out;
+                .modal-resume-img{
+                    position: absolute;
+                    max-width: 80%;
+                    max-height: 80%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    object-fit: cover;
+                    opacity: 0;
+                    transition: 0.5s ease-out;
+                }
+            }
+            .show{
+                opacity: 1;
+            }
+        }
+        .contact{
+            form{
+                p{
+                    padding: 1rem 2rem;
+                }
+            }
+            table{
+                margin: 1rem auto;
+                width:100%;
+                th{
+                    width: 30%;
+                }
+                td{
+                    padding: .2rem;
+                    width: 70%;
+                    input{
+                        padding: .3rem;
+                        width: 90%;
+                        font-family: $home-font;
+                    }
+                }
+            }
+            .send-btn{
+                font-family: $home-font;
+                font-size: 1.4rem;
+                padding: .2rem 2rem;
+                color: white;
+                background-color: $dark-gray;
+                border: 1.5px solid $light-gray;
+                border-radius: 10px;
+                position: relative;
+                transition: .3s;
+                cursor: pointer;
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+
+    .home-balloon-wrapper{
+        position: fixed;
+        bottom: 0;
+        right: 5%;
+        opacity: .7;
+        @include flexColumnCenter();
+        &:hover{
+            opacity: 1;
+        }
+        .home-balloon-body{
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: $main-color;
+            border: 2px solid $main-color;
+            position: relative;
+            cursor: pointer;
+        }
+        .home-balloon-tail{
+            width: 7px;
+            height: 7px;
+            opacity: .9;
+            background-color: $main-color;
+            border: 2px solid $main-color;   
+            clip-path: polygon(0% 100%, 20% 0%, 80% 0%, 100% 100%);
+        }
+        .home-balloon-string{
+            height: 15px;
+            background-color: $main-color;
+            border: 1px solid $main-color;
+        }
+    }
+
+    footer{
+        @include flexCenter();
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+
+@keyframes floating {
+    0% {
+      transform:translate(0, 0);
+    }
+    50% {
+      transform:translate(0, -7px);
+    }
+    100% {
+      transform:translate(0, 0);
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .home-body{
+        .header-container{
+            .title-container{ 
+                .name-container{
+                    .full-name{
+                        font-size: 4.5rem;
+                    }
+                    .fa-github{
+                        font-size: 2.5rem;               
+                    }
+                }
+                .occupation{
+                    font-size: 2rem;
+                }
+            }
+            nav{
+                font-size: 1.5rem;
+            }
+        }
+        .section-container{
+            padding: 1rem 5rem;        
+            section{
+                h1{
+                    font-size: 2.3rem;
+                }
+                .section-contents{
+                    font-size: 1.4rem;
+                }
+            }
+            .projects{
+                .section-contents{
+                    padding: 1rem 8rem;
+                }
+            }
+            .resume{
+                .resume-img{
+                    width: 50%;
+                }
+            }
+            .contact{
+                form{
+                    p{
+                        padding: 1rem 7rem;
+                    }
+                }
+                table{
+                    margin: 1rem auto;
+                    width: 80%;
+                    th{
+                        width: 30%;
+                    }
+                    td{
+                        padding: .2rem;
+                        width: 70%;
+                        input{
+                            padding: .3rem;
+                            width: 90%;
+                            font-family: $home-font;
+                        }
+                        textarea{
+                            width: 90%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .home-body{
+        .header-container{
+            .title-container{ 
+                .name-container{
+                    .full-name{
+                        font-size: 4.5rem;
+                    }
+                    .fa-github{
+                        font-size: 2.5rem;               
+                    }
+                }
+                .occupation{
+                    font-size: 2.3rem;
+                }
+            }
+            nav{
+                font-size: 1.7rem;
+            }
+        }
+        .section-container{
+            padding: 1rem 15rem;        
+            section{
+                h1{
+                    font-size: 2.3rem;
+                }
+                .section-contents{
+                    font-size: 1.4rem;
+                }
+            }
+            .projects{
+                .section-contents{
+                    padding: 1rem 13rem;
+                }
+            }
+            .resume{
+                .resume-img{
+                    width: 50%;
+                }
+            }
+            .contact{
+                form{
+                    padding: 1rem 5rem;
+                }
+                table{
+                    margin: 1rem auto;
+                    width: 80%;
+                    th{
+                        width: 30%;
+                    }
+                    td{
+                        padding: .2rem;
+                        width: 70%;
+                        input{
+                            padding: .3rem;
+                            width: 90%;
+                            font-family: $home-font;
+                        }
+                        textarea{
+                            width: 90%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
