@@ -1,4 +1,66 @@
 window.addEventListener('load', () => {
+  //Letter display 
+  const timeline = gsap.timeline();
+
+  function topTextAnimetion(){
+    document.querySelectorAll('.letter').forEach((item, i) => {
+      gsap.from(item, {
+        opacity: 0,
+        rotation: -100,
+        yPercent: -150,
+        ease: "bounce",
+        duration: 0.5,
+        delay: i * 0.1,
+      });
+    })
+  }
+
+  function balloonAnimation(){
+    gsap.from(".balloon-wrapper", {
+      duration: 1,
+      y: 50, 
+      opacity: 0,
+      ease: "power2.out"
+    })
+  }
+  
+  function bubbleAnimation(){
+    gsap.from(".bubble-wrapper", {
+      duration: 1,
+      y: 50, 
+      opacity: 0,
+      ease: "power2.out"
+    })
+  }
+
+  timeline
+  .add(topTextAnimetion())
+  .from(".balloon-wrapper", {
+    duration: 1,
+    y: 50, 
+    opacity: 0,
+    ease: "power2.out"
+  }, "+=2")
+  .from(".bubble-wrapper", {
+    duration: 1,
+    y: 50, 
+    opacity: 0,
+    ease: "power2.out"
+  })
+
+  
+
+
+
+ 
+
+
+
+  
+  
+
+
+
   //Eye changing
   const balloonBody = document.querySelector('.balloon-body')
   const eyeBalls = document.querySelectorAll('.eyeballs')
@@ -19,9 +81,7 @@ window.addEventListener('load', () => {
     changedEyeBalls.forEach((e) => {
       e.style.visibility = 'hidden'
     })
-  })
-
-  
+  })  
 
   //Eye elems
   const cursor = document.querySelector('.cursor')

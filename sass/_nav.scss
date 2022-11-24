@@ -1,0 +1,63 @@
+@use './config/mixin' as *;
+@use './config/variables' as *;
+@use './config/common-setting' as *;
+
+.header-nav{
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    margin-bottom: 4rem;
+    align-items: center;
+    text-align: end;
+    line-height: 2;
+    cursor: pointer;
+    .header-nav-item{
+        color: white;
+        font-size: 2rem;
+        margin: 1rem 3rem;
+        &:hover{
+            transform: scale(1.2);
+        }
+        li{
+            list-style: none;
+        }
+    }
+}
+
+.main-nav{
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #dddddd24;
+    opacity: 0;
+    z-index: 10;
+    transition: .5s;
+    &:hover{
+        background-color: #dddddd63;
+        .main-nav-item{
+            opacity: 1;
+        }
+    }
+    &.upMove{
+        animation: FrameInAnimation 0.5s forwards;
+    }
+    &.downMove{
+        animation: FrameOutAnimation 0.5s forwards;
+    }
+    .main-nav-item{
+        color: white;
+        opacity: .5;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 1rem 3rem;
+        transition: .5s;
+        &:hover{
+            transform: scale(1.2);
+        }
+        li{
+            list-style: none;
+        }
+    }
+}

@@ -13,6 +13,25 @@ body {
   color: #667b87;
   position: relative;
 }
+body .top-bottom-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 0.5rem 0;
+}
+body .top-bottom-text div {
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+body .top-bottom-text .top-text, body .top-bottom-text .bottom-text {
+  display: flex;
+  align-self: center;
+}
 body .cursor {
   z-index: 1001;
   position: absolute;
@@ -29,11 +48,11 @@ body .balloon-wrapper {
   align-items: center;
 }
 body .balloon-wrapper .balloon-body {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   background-color: white;
-  border: 2px solid #72DDF7;
+  border: 2.5px solid #72DDF7;
   position: relative;
   cursor: pointer;
 }
@@ -161,12 +180,12 @@ body .balloon-wrapper .balloon-string {
 }
 body .bubble-wrapper {
   position: absolute;
-  top: 10%;
-  right: 10%;
+  top: 18%;
+  right: 2%;
 }
 body .bubble-wrapper .bubble {
-  width: 100px;
-  height: 70px;
+  width: 7rem;
+  height: 4rem;
   border: 2px solid #667b87;
   border-radius: 50%;
   position: relative;
@@ -184,7 +203,7 @@ body .bubble-wrapper .small-bubbles {
   border-radius: 50%;
   position: absolute;
   bottom: -30%;
-  left: 10%;
+  left: 2%;
 }
 body .bubble-wrapper .small-bubbles::after {
   content: "";
@@ -198,6 +217,18 @@ body .bubble-wrapper .small-bubbles::after {
 }
 
 @media screen and (min-width: 768px) {
+  body .top-bottom-text {
+    padding: 2rem 3rem;
+  }
+  body .top-bottom-text p {
+    font-size: 3.5rem;
+  }
+  body .top-bottom-text .top-text {
+    align-self: flex-start;
+  }
+  body .top-bottom-text .bottom-text {
+    align-self: flex-end;
+  }
   body .balloon-wrapper .balloon-body .eyes-wrapper .left-eye-outline .changed-left-eyeball::after {
     content: "";
     display: inline-block;
@@ -248,6 +279,9 @@ body .bubble-wrapper .small-bubbles::after {
   }
 }
 @media screen and (min-width: 1024px) {
+  body .top-bottom-text .letter {
+    font-size: 4rem;
+  }
   body .balloon-wrapper .balloon-body {
     width: 200px;
     height: 200px;
@@ -359,8 +393,8 @@ body .bubble-wrapper .small-bubbles::after {
   body .bubble-wrapper .small-bubbles {
     width: 30px;
     height: 30px;
-    bottom: -15%;
-    left: -5%;
+    bottom: -20%;
+    left: -10%;
   }
   body .bubble-wrapper .small-bubbles::after {
     content: "";
@@ -378,17 +412,27 @@ html {
 }
 
 .home-body {
+  overflow-x: hidden;
   color: white;
-  height: auto;
   font-family: "Poor Story", cursive;
   position: relative;
-  backdrop-filter: blur(2.5px);
+}
+.home-body::before {
+  content: "";
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
   background-image: url(../images/blue-sky.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  filter: blur(2.5px);
 }
 .home-body .header-container {
+  width: 100%;
   height: 100vh;
   position: relative;
   display: flex;
@@ -407,40 +451,25 @@ html {
   align-items: baseline;
 }
 .home-body .header-container .title-container .name-container .full-name {
-  font-size: 3.5rem;
+  font-size: 6rem;
   font-weight: bold;
 }
-.home-body .header-container .title-container .name-container .fa-github {
+.home-body .header-container .title-container .name-container .title-icon {
   font-family: "Font Awesome 6 Brands";
   margin-left: 0.8rem;
-  font-size: 2rem;
+  font-size: 3rem;
   color: white;
 }
 .home-body .header-container .title-container .occupation {
-  font-size: 1.5rem;
-}
-.home-body .header-container .title-container .fa-arrow-down {
-  margin-top: 15rem;
-}
-.home-body .header-container nav {
-  font-size: 1.2rem;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 4rem;
-  align-items: center;
-  text-align: end;
-  line-height: 2;
-  cursor: pointer;
-}
-.home-body .header-container nav .nav-item {
-  color: white;
-}
-.home-body .header-container nav .nav-item:hover {
-  transform: scale(1.2);
+  font-size: 3rem;
 }
 .home-body .header-container .arrow-anchor {
   color: white;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .home-body .header-container .arrow-anchor .fa-arrow-down {
   animation: floating 1s infinite ease-in-out 0.8s alternate;
@@ -452,127 +481,58 @@ html {
   justify-content: center;
   align-items: center;
   font-family: "Poor Story", cursive;
-  padding: 1rem;
-  position: relative;
 }
 .home-body .section-container section {
   font-size: 1.2rem;
   text-align: center;
-  margin: 1rem auto 2rem;
+  margin: 4rem auto;
+  width: 100vw;
 }
 .home-body .section-container section h1 {
   margin: 2rem auto 1rem;
+  font-size: 2.5rem;
 }
 .home-body .section-container section .section-contents {
   background-color: rgba(221, 221, 221, 0.3882352941);
-  padding: 1rem;
   border-radius: 10px;
-}
-.home-body .section-container .about-me .section-contents {
-  padding: 2rem 2.5rem;
-}
-.home-body .section-container .projects .project-title {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-.home-body .section-container .projects .section-contents {
-  position: relative;
-}
-.home-body .section-container .projects .section-contents .project-list {
-  list-style: none;
-}
-.home-body .section-container .projects .project-img-container {
-  width: 22rem;
-  height: 15rem;
-  background-color: white;
-  margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.home-body .section-container .projects .project-img-container a {
-  color: black;
-}
-.home-body .section-container .resume .resume-img {
-  cursor: pointer;
-  width: 70%;
-}
-.home-body .section-container .resume .resume-img:hover {
-  transform: scale(1.03);
-}
-.home-body .section-container .resume .resume-modal-container {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  pointer-events: none;
-  opacity: 0;
-  transition: 0.25s ease-out;
-}
-.home-body .section-container .resume .resume-modal-container .modal-resume-img {
-  position: absolute;
-  max-width: 80%;
-  max-height: 80%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  opacity: 0;
-  transition: 0.5s ease-out;
-}
-.home-body .section-container .resume .show {
-  opacity: 1;
-}
-.home-body .section-container .contact form p {
-  padding: 1rem 2rem;
-}
-.home-body .section-container .contact table {
-  margin: 1rem auto;
-  width: 100%;
-}
-.home-body .section-container .contact table th {
-  width: 30%;
-}
-.home-body .section-container .contact table td {
-  padding: 0.2rem;
-  width: 70%;
-}
-.home-body .section-container .contact table td input {
-  padding: 0.3rem;
   width: 90%;
-  font-family: "Poor Story", cursive;
+  margin: 0 auto;
+  padding: 2rem 0.5rem;
 }
-.home-body .section-container .contact .send-btn {
-  font-family: "Poor Story", cursive;
-  font-size: 1.4rem;
-  padding: 0.2rem 2rem;
-  color: white;
-  background-color: #667b87;
-  border: 1.5px solid #DDDDDD;
-  border-radius: 10px;
-  position: relative;
-  transition: 0.3s;
-  cursor: pointer;
-}
-.home-body .section-container .contact .send-btn:hover {
-  transform: scale(1.1);
-}
-.home-body .home-balloon-wrapper {
+.home-body .balloon-wrapper {
+  display: flex;
+  flex-direction: column;
   position: fixed;
-  bottom: 0;
-  right: 5%;
+  bottom: -40%;
+  right: -45%;
+  opacity: 0;
+  transform: translateY(200px);
+}
+.home-body .balloon-wrapper.upMove {
+  animation: UpAnimation 0.5s forwards;
+}
+.home-body .balloon-wrapper.downMove {
+  animation: DownAnimation 0.5s forwards;
+}
+.home-body .balloon-wrapper p {
+  margin-bottom: 0.7rem;
+}
+.home-body .balloon-wrapper .balloon-atag {
+  display: inline-block;
+}
+.home-body .balloon-wrapper .balloon-atag .home-balloon-wrapper {
+  animation: floating 1s infinite ease-in-out 0.8s alternate;
+  transition: 1.5s ease-in-out;
   opacity: 0.7;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.home-body .home-balloon-wrapper:hover {
+.home-body .balloon-wrapper .balloon-atag .home-balloon-wrapper:hover {
   opacity: 1;
 }
-.home-body .home-balloon-wrapper .home-balloon-body {
+.home-body .balloon-wrapper .balloon-atag .home-balloon-wrapper .home-balloon-body {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -581,7 +541,7 @@ html {
   position: relative;
   cursor: pointer;
 }
-.home-body .home-balloon-wrapper .home-balloon-tail {
+.home-body .balloon-wrapper .balloon-atag .home-balloon-wrapper .home-balloon-tail {
   width: 7px;
   height: 7px;
   opacity: 0.9;
@@ -589,7 +549,7 @@ html {
   border: 2px solid #72DDF7;
   clip-path: polygon(0% 100%, 20% 0%, 80% 0%, 100% 100%);
 }
-.home-body .home-balloon-wrapper .home-balloon-string {
+.home-body .balloon-wrapper .balloon-atag .home-balloon-wrapper .home-balloon-string {
   height: 15px;
   background-color: #72DDF7;
   border: 1px solid #72DDF7;
@@ -598,10 +558,136 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.5rem;
   font-size: 1.1rem;
+  padding-bottom: 0.8rem;
 }
 
+@media screen and (max-width: 768px) {
+  .home-body .header-container .title-container .name-container .full-name {
+    font-size: 5rem;
+  }
+  .home-body .header-container .title-container .name-container .title-icon {
+    font-size: 2.5rem;
+  }
+  .home-body .header-container .title-container .occupation {
+    font-size: 2rem;
+  }
+  .home-body .header-container .arrow-anchor {
+    color: white;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .home-body .header-container .arrow-anchor .fa-arrow-down {
+    animation: floating 1s infinite ease-in-out 0.8s alternate;
+    transition: 1.5s ease-in-out;
+  }
+  .home-body .balloon-wrapper {
+    bottom: -38%;
+  }
+}
+.header-nav {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  margin-bottom: 4rem;
+  align-items: center;
+  text-align: end;
+  line-height: 2;
+  cursor: pointer;
+}
+.header-nav .header-nav-item {
+  color: white;
+  font-size: 2rem;
+  margin: 1rem 3rem;
+}
+.header-nav .header-nav-item:hover {
+  transform: scale(1.2);
+}
+.header-nav .header-nav-item li {
+  list-style: none;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(221, 221, 221, 0.1411764706);
+  opacity: 0;
+  z-index: 10;
+  transition: 0.5s;
+}
+.main-nav:hover {
+  background-color: rgba(221, 221, 221, 0.3882352941);
+}
+.main-nav:hover .main-nav-item {
+  opacity: 1;
+}
+.main-nav.upMove {
+  animation: FrameInAnimation 0.5s forwards;
+}
+.main-nav.downMove {
+  animation: FrameOutAnimation 0.5s forwards;
+}
+.main-nav .main-nav-item {
+  color: white;
+  opacity: 0.5;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 3rem;
+  transition: 0.5s;
+}
+.main-nav .main-nav-item:hover {
+  transform: scale(1.2);
+}
+.main-nav .main-nav-item li {
+  list-style: none;
+}
+
+@keyframes UpAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes DownAnimation {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(200px);
+  }
+}
+@keyframes FrameInAnimation {
+  from {
+    opacity: 1;
+    transform: translateY(-200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes FrameOutAnimation {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-200px);
+  }
+}
 @keyframes floating {
   0% {
     transform: translate(0, 0);
@@ -613,107 +699,285 @@ html {
     transform: translate(0, 0);
   }
 }
-@media screen and (min-width: 768px) {
-  .home-body .header-container .title-container .name-container .full-name {
-    font-size: 4.5rem;
+.projects .section-contents .project-list {
+  list-style: none;
+}
+.projects .display-description {
+  display: flex;
+  padding: 1rem 3rem;
+  margin: 1rem auto 2rem;
+  align-items: stretch;
+}
+.projects .display-description .project-img-container {
+  width: 100%;
+  padding: 10rem 5rem;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.projects .display-description .project-img-container:hover {
+  transform: scale(1.03);
+  transition: 0.5s;
+}
+.projects .display-description .project-img-container a {
+  color: black;
+}
+.projects .display-description .description-container {
+  width: 100%;
+  padding: 0 1rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.projects .display-description .description-container .github-link .project-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.projects .display-description .description-container .github-link .project-title-container .project-title {
+  font-size: 2rem;
+  color: white;
+}
+.projects .display-description .description-container .github-link .project-title-container .fa-github {
+  margin-left: 1rem;
+  color: white;
+  font-size: 2rem;
+}
+.projects .display-description .description-container .project-description {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+.projects .display-description .description-container .skill-icons i {
+  margin: 0.3rem;
+  font-size: 1.7rem;
+}
+
+@media screen and (max-width: 768px) {
+  .projects .display-description {
+    align-items: stretch;
   }
-  .home-body .header-container .title-container .name-container .fa-github {
-    font-size: 2.5rem;
+  .projects .display-description .project-img-container {
+    height: auto;
+    padding: 0;
   }
-  .home-body .header-container .title-container .occupation {
-    font-size: 2rem;
+  .projects .display-description .project-img-container:hover {
+    transform: scale(1.03);
+    transition: 0.5s;
   }
-  .home-body .header-container nav {
+  .projects .display-description .project-img-container a {
+    color: black;
+  }
+  .projects .display-description .description-container {
+    width: 100%;
+    padding: 0 1rem 0 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .projects .display-description .description-container .github-link .project-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .projects .display-description .description-container .github-link .project-title-container .project-title {
+    font-size: 1.7rem;
+    color: white;
+  }
+  .projects .display-description .description-container .github-link .project-title-container .fa-github {
+    margin-left: 1rem;
+    color: white;
     font-size: 1.5rem;
   }
-  .home-body .section-container {
-    padding: 1rem 5rem;
+  .projects .display-description .description-container .project-description {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
   }
-  .home-body .section-container section h1 {
-    font-size: 2.3rem;
-  }
-  .home-body .section-container section .section-contents {
-    font-size: 1.4rem;
-  }
-  .home-body .section-container .projects .section-contents {
-    padding: 1rem 8rem;
-  }
-  .home-body .section-container .resume .resume-img {
-    width: 50%;
-  }
-  .home-body .section-container .contact form p {
-    padding: 1rem 7rem;
-  }
-  .home-body .section-container .contact table {
-    margin: 1rem auto;
-    width: 80%;
-  }
-  .home-body .section-container .contact table th {
-    width: 30%;
-  }
-  .home-body .section-container .contact table td {
-    padding: 0.2rem;
-    width: 70%;
-  }
-  .home-body .section-container .contact table td input {
-    padding: 0.3rem;
-    width: 90%;
-    font-family: "Poor Story", cursive;
-  }
-  .home-body .section-container .contact table td textarea {
-    width: 90%;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .home-body .header-container .title-container .name-container .full-name {
-    font-size: 4.5rem;
-  }
-  .home-body .header-container .title-container .name-container .fa-github {
-    font-size: 2.5rem;
-  }
-  .home-body .header-container .title-container .occupation {
-    font-size: 2.3rem;
-  }
-  .home-body .header-container nav {
+  .projects .display-description .description-container .skill-icons i {
+    margin: 0.3rem;
     font-size: 1.7rem;
   }
-  .home-body .section-container {
-    padding: 1rem 15rem;
-  }
-  .home-body .section-container section h1 {
-    font-size: 2.3rem;
-  }
-  .home-body .section-container section .section-contents {
-    font-size: 1.4rem;
-  }
-  .home-body .section-container .projects .section-contents {
-    padding: 1rem 13rem;
-  }
-  .home-body .section-container .resume .resume-img {
-    width: 50%;
-  }
-  .home-body .section-container .contact form {
-    padding: 1rem 5rem;
-  }
-  .home-body .section-container .contact table {
-    margin: 1rem auto;
-    width: 80%;
-  }
-  .home-body .section-container .contact table th {
-    width: 30%;
-  }
-  .home-body .section-container .contact table td {
-    padding: 0.2rem;
-    width: 70%;
-  }
-  .home-body .section-container .contact table td input {
-    padding: 0.3rem;
-    width: 90%;
-    font-family: "Poor Story", cursive;
-  }
-  .home-body .section-container .contact table td textarea {
-    width: 90%;
-  }
+}
+.about-me .section-contents {
+  padding: 5rem 2.5rem;
+  display: flex;
+  align-items: stretch;
+}
+.about-me .resume-container {
+  display: flex;
+  flex-direction: column;
+}
+.about-me .resume-container .resume-title {
+  font-size: 1.5rem;
+}
+.about-me .resume-container .resume-img {
+  margin-left: 4rem;
+  cursor: zoom-in;
+  width: 50%;
+}
+.about-me .resume-container .resume-img:hover {
+  transform: scale(1.03);
+  transition: 0.5s;
+}
+.about-me .aboutMe-right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 5rem;
+}
+.about-me .aboutMe-right-side p {
+  font-size: 1.7rem;
+}
+.about-me .aboutMe-right-side .read-resume-btn {
+  font-family: "Poor Story", cursive;
+  font-size: 1.7rem;
+  padding: 0.7rem 1rem;
+  margin: 0.5rem 2rem;
+  color: white;
+  background-color: #667b87;
+  border: 1.5px solid #DDDDDD;
+  border-radius: 10px;
+  position: relative;
+  transition: 0.3s;
+  margin-top: 1.5rem;
+  cursor: pointer;
+}
+.about-me .aboutMe-right-side .read-resume-btn:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+.contact .contact-text {
+  font-size: 2.5rem;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+.contact .icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact .icon-container a {
+  color: white;
+}
+.contact .icon-container i {
+  margin: 0.5rem;
+  font-size: 2rem;
+}
+.contact .icon-container .email-icon {
+  position: relative;
+}
+.contact .icon-container .email-icon .fa-envelope {
+  margin: 0.5rem 0.5rem 0.8rem 0.5rem;
+}
+.contact .icon-container .email-icon:hover .toolchip-text2 {
+  display: block;
+  top: 0px;
+  left: 80px;
+}
+.contact .icon-container .toolchip-text1, .contact .icon-container .toolchip-text2 {
+  display: none;
+  position: absolute;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.6em;
+  color: #fff;
+  border-radius: 0.5rem;
+  background: #000;
+  width: 5rem;
+}
+.contact .icon-container .toolchip-text2:before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  right: 95%;
+  border: 15px solid transparent;
+  border-top: 15px solid #000;
+  margin-left: -15px;
+  transform: rotateZ(90deg);
+}
+.contact .contact-section-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact .contact-section-container form {
+  width: 90%;
+}
+.contact .contact-section-container form table {
+  margin: 1rem auto;
+  width: 70%;
+}
+.contact .contact-section-container form table th {
+  width: 10%;
+  font-size: 1.5rem;
+}
+.contact .contact-section-container form table td {
+  padding: 0.2rem;
+  width: 60%;
+}
+.contact .contact-section-container form table td input {
+  padding: 0.3rem;
+  width: 90%;
+  font-family: "Poor Story", cursive;
+  font-size: 1.2rem;
+}
+.contact .contact-section-container form table td textarea {
+  width: 90%;
+  font-family: "Poor Story", cursive;
+  font-size: 1.2rem;
+}
+.contact .contact-section-container form .send-btn {
+  font-family: "Poor Story", cursive;
+  font-size: 1.4rem;
+  padding: 0.4rem 3rem;
+  color: white;
+  background-color: #667b87;
+  border: 1.5px solid #DDDDDD;
+  border-radius: 10px;
+  position: relative;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.contact .contact-section-container form .send-btn:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+.contact .contact-section-container .email-copy-container {
+  margin: 1.7rem auto;
+}
+.contact .contact-section-container .email-copy-container .email-title-msg {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.contact .contact-section-container .email-copy-container #email {
+  font-family: "Poor Story", cursive;
+  font-size: 1.7rem;
+  color: white;
+  background-color: transparent;
+  border: none;
+  display: block;
+  margin: 0 auto;
+}
+.contact .contact-section-container .email-copy-container .email-copy-btn {
+  font-family: "Poor Story", cursive;
+  font-size: 1.4rem;
+  padding: 0.2rem 2rem;
+  color: white;
+  background-color: #667b87;
+  border: 1.5px solid #DDDDDD;
+  border-radius: 10px;
+  position: relative;
+  transition: 0.3s;
+  margin: 1rem 3rem 3rem;
+  cursor: pointer;
+}
+.contact .contact-section-container .email-copy-container .email-copy-btn:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -13,7 +13,7 @@ timeline
     opacity: 0,
     ease: "power2.out"
 })
-.from(".nav-item", {
+.from(".header-nav-item", {
     x: 30,
     duration: 1,
     opacity: 0,
@@ -56,9 +56,9 @@ gsap.registerEffect({
         return gsap.from(target, {
             scrollTrigger: {
                 trigger: target,
-                start: "top 70%",
+                start: "top 60%",
             },
-            duration: 1.2,
+            duration: 1.4,
             y: 15, 
             opacity: 0,
             ease: "power2.out"
@@ -76,11 +76,11 @@ gsap.effects.sectionTitleAnimation(contactTitle);
 gsap.effects.sectionContentsAnimation(contactSection);
 
 
-//Github icon gsap
-gsap.fromTo(".fa-github",
+//Linkedin icon gsap
+gsap.fromTo(".title-icon",
 { 
     scrollTrigger: {
-        trigger: ".fa-github",
+        trigger: ".title-icon",
         start: "center bottom",
     },
     x: 500 
@@ -92,18 +92,77 @@ gsap.fromTo(".fa-github",
 })
 
 
-//Resume modal open
-const resumeImg = document.querySelector('.resume-img');
-const resumeModalContainer = document.querySelector('.resume-modal-container');
-const modalResumeImg = document.querySelector('.modal-resume-img');
+//Balloon animation
+$(window).scroll(function () {
+    const scroll = $(window).scrollTop();
+    if (scroll >= 400){
+        $('.balloon-wrapper').removeClass('downMove');
+        $('.balloon-wrapper').addClass('upMove');
+    }else{
+        if($('.balloon-wrapper').hasClass('upMove')){
+            $('.balloon-wrapper').removeClass('upMove');
+            $('.balloon-wrapper').addClass('downMove');
+        }
+    }
+});
 
-resumeImg.addEventListener('click', () => {
-    resumeModalContainer.classList.add('show');
-    modalResumeImg.classList.add('show');
+//Main nav animation
+$(window).scroll(function(){
+    const scroll = $(window).scrollTop()
+    if (scroll >= 400){
+        $('.main-nav').removeClass('downMove');
+        $('.main-nav').addClass('upMove');
+    }else{
+        if($('.main-nav').hasClass('upMove')){
+            $('.main-nav').removeClass('upMove');
+            $('.main-nav').addClass('downMove');
+        }
+    }
 })
 
-//image modal
-// https://logsuke.com/web/programming/javascript/javascript-modal-animation
+//send Comfirm email
+window.onload = function() {
+    document.querySelector('form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        let fName = document.getElementById('fName').value;
+        let lName = document.getElementById('lName').value;
+        let email = document.getElementById('email').value;
+        let message = document.getElementById('message').value;
+
+        const templateVariables = {
+            fName: fName,
+            lName: lName,
+            email: email,
+            message: message
+        };
+
+        try {
+            await emailjs.send(
+                'service_KEY',
+                'template_KEY',
+                templateVariables,
+            );
+    
+            fName = '';
+            lName = '';
+            email = '';
+            message = '';
+
+            //msg of 'Successfully sent'
+            
+        } catch (error) {
+            
+        }
+    });
+}
+
+// const {MAILJS_ACOUNT_KEY, MAILJS_SERVICE_KEY, MAILJS_TEMPATE_KEY} = process.env;
+
+
+
+
+
+
 
 //ScrollTriger
 //https://liginc.co.jp/548232
