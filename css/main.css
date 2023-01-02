@@ -475,13 +475,7 @@ html {
   scroll-behavior: smooth;
 }
 
-.home-body {
-  overflow-x: hidden;
-  color: white;
-  font-family: "Poor Story", cursive;
-  position: relative;
-}
-.home-body::before {
+.light-mode::before {
   content: "";
   width: 100vw;
   height: 100%;
@@ -494,6 +488,55 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
   filter: blur(2.5px);
+}
+
+.dark-mode::before {
+  content: "";
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url(../images/night-sky.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: blur(0.5px);
+}
+
+.home-body {
+  overflow-x: hidden;
+  color: white;
+  font-family: "Poor Story", cursive;
+  position: relative;
+}
+.home-body .mode-change {
+  position: absolute;
+  top: 0.2%;
+  right: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+.home-body .mode-change .fa-sun {
+  margin-top: 0.8rem;
+}
+.home-body .mode-change .fa-sun.hidden {
+  display: none;
+}
+.home-body .mode-change .fa-sun.show {
+  display: block;
+}
+.home-body .mode-change .fa-moon {
+  margin-top: 0.8rem;
+}
+.home-body .mode-change .fa-moon.hidden {
+  display: none;
+}
+.home-body .mode-change .fa-moon.show {
+  display: block;
 }
 .home-body .header-container {
   width: 100%;
@@ -576,13 +619,17 @@ html {
 .home-body .balloon-wrapper.downMove {
   animation: DownAnimation 0.5s forwards;
 }
-.home-body .balloon-wrapper p {
+.home-body .balloon-wrapper .light-pagetop {
   margin-bottom: 0.7rem;
 }
-.home-body .balloon-wrapper .balloon-atag {
+.home-body .balloon-wrapper .dark-pagetop {
+  display: none;
+  margin-bottom: 0.2rem;
+}
+.home-body .balloon-wrapper .pagetop-atag {
   display: inline-block;
 }
-.home-body .balloon-wrapper .balloon-atag .home-balloon-wrapper {
+.home-body .balloon-wrapper .pagetop-atag .home-balloon-wrapper {
   animation: floating 1s infinite ease-in-out 0.8s alternate;
   transition: 1.5s ease-in-out;
   opacity: 0.7;
@@ -591,10 +638,10 @@ html {
   justify-content: center;
   align-items: center;
 }
-.home-body .balloon-wrapper .balloon-atag .home-balloon-wrapper:hover {
+.home-body .balloon-wrapper .pagetop-atag .home-balloon-wrapper:hover {
   opacity: 1;
 }
-.home-body .balloon-wrapper .balloon-atag .home-balloon-wrapper .home-balloon-body {
+.home-body .balloon-wrapper .pagetop-atag .home-balloon-wrapper .home-balloon-body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -603,7 +650,7 @@ html {
   position: relative;
   cursor: pointer;
 }
-.home-body .balloon-wrapper .balloon-atag .home-balloon-wrapper .home-balloon-tail {
+.home-body .balloon-wrapper .pagetop-atag .home-balloon-wrapper .home-balloon-tail {
   width: 7px;
   height: 7px;
   opacity: 0.9;
@@ -611,10 +658,16 @@ html {
   border: 2px solid #72DDF7;
   clip-path: polygon(0% 100%, 20% 0%, 80% 0%, 100% 100%);
 }
-.home-body .balloon-wrapper .balloon-atag .home-balloon-wrapper .home-balloon-string {
+.home-body .balloon-wrapper .pagetop-atag .home-balloon-wrapper .home-balloon-string {
   height: 15px;
   background-color: #72DDF7;
   border: 1px solid #72DDF7;
+}
+.home-body .balloon-wrapper .pagetop-atag .moon-icon {
+  display: none;
+  width: 2.5rem;
+  margin-left: 0.5rem;
+  animation: swaing 2s linear infinite;
 }
 .home-body footer {
   display: flex;
@@ -623,7 +676,12 @@ html {
   font-size: 1.2rem;
   height: 10vh;
   padding: 0.8rem;
+}
+.home-body footer.footer-light-mode {
   background: linear-gradient(transparent, #4072ae);
+}
+.home-body footer.footer-dark-mode {
+  background: transparent;
 }
 
 @media screen and (min-width: 768px) {
@@ -644,6 +702,12 @@ html {
   }
 }
 @media screen and (min-width: 1024px) {
+  .home-body .header-container .title-container .full-name {
+    font-size: 6rem;
+  }
+  .home-body .header-container .title-container .occupation {
+    font-size: 3rem;
+  }
   .home-body .balloon-wrapper {
     right: 2%;
   }
@@ -677,7 +741,6 @@ html {
   top: 0;
   width: 100%;
   height: 15vh;
-  background: linear-gradient(#4072ae, transparent);
   z-index: 10;
   transition: 0.5s;
   opacity: 0;
@@ -687,6 +750,12 @@ html {
 }
 .main-nav.downMove {
   animation: FrameOutAnimation 0.5s forwards;
+}
+.main-nav.nav-light-mode {
+  background: linear-gradient(#4072ae, transparent);
+}
+.main-nav.nav-dark-mode {
+  background: linear-gradient(#222f68, transparent);
 }
 .main-nav .main-nav-item {
   color: white;
@@ -715,6 +784,11 @@ html {
   .main-nav .main-nav-item {
     font-size: 1.2rem;
     margin: 1rem 1rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .header-nav .header-nav-item {
+    font-size: 2rem;
   }
 }
 @keyframes UpAnimation {
@@ -975,10 +1049,10 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1.5rem auto;
+    margin: 1.5rem;
   }
   .projects .display-description .description-container .discription-container .skill-icons i {
-    margin: 0.3rem;
+    margin: 0.5rem;
     font-size: 1.5rem;
   }
   .projects .display-description .description-container .discription-container .skill-icons img {
@@ -1265,6 +1339,10 @@ html {
 @media screen and (min-width: 1024px) {
   .contact .contact-text {
     font-size: 2rem;
+    margin: 1.5rem auto 0;
+  }
+  .contact .contact-section-container form {
+    width: 60%;
   }
   .contact .contact-section-container .btn-container {
     display: flex;

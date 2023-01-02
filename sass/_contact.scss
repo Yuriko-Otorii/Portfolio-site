@@ -131,8 +131,12 @@
     .contact{
         .contact-text{
             font-size: 2rem;
+            margin: 1.5rem auto 0;
         }
         .contact-section-container{
+            form{
+                width: 60%;
+            }
             .btn-container{
                 display: flex;
                 flex-direction: row;

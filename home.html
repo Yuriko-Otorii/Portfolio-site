@@ -37,7 +37,12 @@
     <link rel="stylesheet" href="./css/main.css" />
     <title>Home page</title>
   </head>
-  <body class="home-body" id="page-top">
+  <body class="home-body light-mode" id="page-top">
+    <div class="mode-change">
+      <p>Mode</p>
+      <i class="fas fa-lg fa-sun"></i>
+      <i class="fas fa-lg fa-moon hidden"></i>
+    </div>
     <div class="header-container">
       <div class="title-container">
         <h1 class="full-name">Yuriko Otorii</h1>
@@ -104,7 +109,6 @@
                       <i class="fa-brands fa-react"></i>
                       <i class="fa-brands fa-square-js"></i>
                       <i class="fa-brands fa-sass"></i>
-                    </div>
                   </div>
                   <div class="github-icon-bubble">
                     <a
@@ -222,7 +226,6 @@
             <form action="mailto:snnp.ad.pnts@gmail.com" class="contact-form">
               <table>
                 <tr>
-                  <th><label for="fName">First name</label></th>
                   <td>
                     <input
                       type="text"
@@ -233,7 +236,6 @@
                   </td>
                 </tr>
                 <tr>
-                  <th><label for="lName">Last name</label></th>
                   <td>
                     <input
                       type="text"
@@ -244,7 +246,6 @@
                   </td>
                 </tr>
                 <tr>
-                  <th><label for="email">E-mail</label></th>
                   <td>
                     <input
                       type="text"
@@ -255,7 +256,6 @@
                   </td>
                 </tr>
                 <tr>
-                  <th><label for="message">Message</label></th>
                   <td>
                     <textarea
                       name=""
@@ -292,17 +292,19 @@
     </main>
 
     <div class="balloon-wrapper">
-      <p>Page Top</p>
-      <a href="#page-top" class="balloon-atag">
+      <p class="light-pagetop">Page Top</p>
+      <p class="dark-pagetop">Page Top</p>
+      <a href="#page-top" class="pagetop-atag">
         <div class="home-balloon-wrapper">
           <div class="home-balloon-body"></div>
           <div class="home-balloon-tail"></div>
           <div class="home-balloon-string"></div>
         </div>
+        <img class="moon-icon" alt="Moon icon" src="./images/moon-icon.png" />
       </a>
     </div>
-
-    <footer>
+    
+    <footer class="footer-light-mode">
       <p>&copy;2022 Yuriko Otorii</p>
     </footer>
 

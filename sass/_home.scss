@@ -7,13 +7,8 @@ html {
     scroll-behavior: smooth;
 }
 
-.home-body{
-    overflow-x: hidden;
-    color: white;
-    font-family: $home-font;
-    position: relative;
-    &::before{
-        content: "";
+.light-mode::before{
+    content: "";
         width: 100vw;
         height: 100%;
         position: absolute;
@@ -21,17 +16,63 @@ html {
         left: 0;
         z-index: -1;
         background: {
-            // image: url(../images/night-sky.jpg);
             image: url(../images/blue-sky.jpg);
             size: cover;
             repeat: no-repeat;
             attachment: fixed;
         }
-        filter: blur(2.5px);
+    filter: blur(2.5px);
+}
+
+.dark-mode::before{
+    content: "";
+        width: 100vw;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background: {
+            image: url(../images/night-sky.jpg);
+            size: cover;
+            repeat: no-repeat;
+            attachment: fixed;
+        }
+    filter: blur(0.5px);
+}
+
+.home-body{
+    overflow-x: hidden;
+    color: white;
+    font-family: $home-font;
+    position: relative;
+    .mode-change{
+        position: absolute;
+        top: .2%;
+        right: 3%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1000;
+        .fa-sun{
+            margin-top: .8rem;
+            &.hidden{
+                display: none;
+            }
+            &.show{
+                display: block;
+            }
+        }
+        .fa-moon{
+            margin-top: .8rem;
+            &.hidden{   
+                display: none;
+            }
+            &.show{
+                display: block;
+            }
+        }
     }
-
-    
-
     
     .header-container{
         width: 100%;
@@ -108,10 +149,14 @@ html {
         &.downMove{
             animation: DownAnimation 0.5s forwards;
         }
-        p{
+        .light-pagetop{
             margin-bottom: .7rem;
         }
-        .balloon-atag{      
+        .dark-pagetop{
+            display: none;
+            margin-bottom: .2rem;
+        }
+        .pagetop-atag{      
             display: inline-block;      
             .home-balloon-wrapper{
                 animation: floating 1s infinite ease-in-out .8s alternate;
@@ -144,7 +189,14 @@ html {
                     border: 1px solid $main-color;
                 }
             }
+            .moon-icon{
+                display: none;
+                width: 2.5rem;
+                margin-left: .5rem;
+                animation: swaing 2s linear infinite;
+            }
         }
+        
     }
 
     footer{
@@ -152,7 +204,12 @@ html {
         font-size: 1.2rem;
         height: 10vh;
         padding: .8rem;
-        background: linear-gradient(transparent, $main-dark-color);
+        &.footer-light-mode{
+            background: linear-gradient(transparent, $main-dark-color);
+        }
+        &.footer-dark-mode{
+            background: transparent;
+        }
     }
 }
 
@@ -191,6 +248,16 @@ html {
 
 @media screen and (min-width: 1024px) {
     .home-body{
+        .header-container{
+            .title-container{ 
+                .full-name{
+                    font-size: 6rem;
+                }
+                .occupation{
+                    font-size: 3rem;
+                }
+            }
+        }
         .balloon-wrapper{
             right: 2%;
         }

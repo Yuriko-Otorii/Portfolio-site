@@ -130,6 +130,50 @@ $(window).scroll(function(){
     }
 })
 
+//Mode change
+const pageTopBalloon = document.querySelector('.home-balloon-wrapper')
+const lightpageTopPtag = document.querySelector('.light-pagetop')
+const pageTopMoon = document.querySelector('.moon-icon')
+const darkpageTopPtag = document.querySelector('.dark-pagetop')
+
+document.querySelector('.mode-change').addEventListener('click', () => {
+    console.log('clicked');
+    if($('.fa-moon').hasClass('hidden')){
+        //Light to dark
+        $('.fa-sun').removeClass('show')
+        $('.fa-sun').addClass('hidden')
+        $('.fa-moon').removeClass('hidden')
+        $('.fa-moon').addClass('show')
+        $('.home-body').addClass('dark-mode')
+        $('.home-body').removeClass('light-mode')
+        $('footer').removeClass('footer-light-mode')
+        $('footer').addClass('footer-dark-mode')
+        $('.main-nav').removeClass('nav-light-mode')
+        $('.main-nav').addClass('nav-dark-mode')
+        pageTopBalloon.style.display = 'none'
+        lightpageTopPtag.style.display = 'none'
+        pageTopMoon.style.display = 'block'
+        darkpageTopPtag.style.display = 'block'
+    }else{
+        //Dark to light
+        $('.fa-sun').removeClass('hidden')
+        $('.fa-sun').addClass('show')
+        $('.fa-moon').removeClass('show')
+        $('.fa-moon').addClass('hidden')
+        $('.home-body').removeClass('dark-mode')
+        $('.home-body').addClass('light-mode')
+        $('footer').removeClass('footer-dark-mode')
+        $('footer').addClass('footer-light-mode')
+        $('.main-nav').removeClass('nav-dark-mode')
+        $('.main-nav').addClass('nav-light-mode')
+        pageTopBalloon.style.display = 'flex'
+        lightpageTopPtag.style.display = 'block'
+        pageTopMoon.style.display = 'none'
+        darkpageTopPtag.style.display = 'none'
+    }
+})
+
+
 //send Comfirm email
 window.onload = function() {
     document.querySelector('form').addEventListener('submit', async function(e) {
