@@ -4,38 +4,33 @@
 
 .about-me{
     .section-contents{
-        padding: 5rem 2.5rem;
         display: flex;
+        flex-direction: column;
         align-items: stretch;
     }
     .resume-container{
+        order: 2;
         display: flex;
         flex-direction: column;
-        .resume-title{
-            font-size: 1.5rem;
-        }
-        .resume-img{
-            margin-left: 4rem;
-            cursor: zoom-in;
-            width: 50%;
-            &:hover{
-                transform: scale(1.03);
-                transition: .5s;
+        margin-top: 1rem;
+        .resume-atag{
+            position: relative;
+            .resume-img{
+                width: 50%;
+                min-width: 250px;
+                cursor: zoom-in;
+                &:hover{
+                    transform: scale(1.03);
+                    transition: .5s;
+                }
             }
+            .fa-hand-pointer{
+                display: none;
+            }           
         }
-    }
-    .aboutMe-right-side{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        margin-right: 5rem;
-        p{
-            // padding: 0 3rem;
-            font-size: 1.7rem;
-        }
-        .read-resume-btn{
+        .mobile-read-resume-btn{
             font-family: $home-font;
-            font-size: 1.7rem;
+            font-size: 1.2rem;
             padding: .7rem 1rem;
             margin: .5rem 2rem;
             color: white;
@@ -49,6 +44,88 @@
             &:hover{
                 transform: scale(1.1);
                 transition: 0.5s;
+            }
+        }
+    }
+    .aboutMe-right-side{
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        .greeting-icon-container{
+            @include flexCenter();
+            align-items: baseline;
+            h3{
+                font-size: 1.6rem;
+                margin-top: 1.5rem;
+            }
+        }
+        p{
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 1rem;
+        }
+        .read-resume-btn{
+            display: none;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .about-me{
+        .section-contents{
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+        }
+        .resume-container{
+            order: 1;
+            .resume-atag{
+                .fa-hand-pointer{
+                    display: block;
+                    font-family: Font Awesome\ 6 Free;
+                    font-size: 1.5rem;
+                    color: $main-dark-color;
+                    animation: swaing 1s linear infinite;
+                    position: absolute;
+                    bottom: 5%;
+                    right: 28%;
+                }        
+            }
+            .mobile-read-resume-btn{
+                display: none;
+            }
+        }
+        .aboutMe-right-side{
+            order: 2;
+            .greeting-icon-container{
+                h3{
+                    font-size: 1.6rem;
+                }
+            }
+            p{
+                font-size: 1.5rem;
+                text-align: start;
+            }
+            .read-resume-btn{
+                display: block;
+                font-family: $home-font;
+                font-size: 1.2rem;
+                padding: .7rem 1rem;
+                margin: .5rem 2rem;
+                color: white;
+                background-color: $dark-gray;
+                border: 1.5px solid $light-gray;
+                border-radius: 10px;
+                position: relative;
+                transition: .3s;
+                margin-top: 1.5rem;
+                cursor: pointer;
+                &:hover{
+                    transform: scale(1.1);
+                    transition: 0.5s;
+                }
             }
         }
     }

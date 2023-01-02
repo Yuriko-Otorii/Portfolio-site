@@ -13,6 +13,32 @@ timeline
     opacity: 0,
     ease: "power2.out"
 })
+.fromTo(".title-linkedin-icon",
+{ 
+    scrollTrigger: {
+        trigger: ".title-linkedin-icon",
+        start: "center bottom",
+    },
+    x: 650 
+},
+{
+    x: 0,
+    duration: 1.5,
+    ease: Bounce.easeOut 
+})
+.fromTo(".title-github-icon",
+{ 
+    scrollTrigger: {
+        trigger: ".title-github-icon",
+        start: "center bottom",
+    },
+    x: -650
+}, 
+{
+    x: 0,
+    duration: 1.5,
+    ease: Bounce.easeOut 
+}, "<")
 .from(".header-nav-item", {
     x: 30,
     duration: 1,
@@ -21,7 +47,7 @@ timeline
     stagger: {
         each: .3,
     }
-})
+}, "-=1.1")
 
 
 //Section gsap
@@ -76,22 +102,6 @@ gsap.effects.sectionTitleAnimation(contactTitle);
 gsap.effects.sectionContentsAnimation(contactSection);
 
 
-//Linkedin icon gsap
-gsap.fromTo(".title-icon",
-{ 
-    scrollTrigger: {
-        trigger: ".title-icon",
-        start: "center bottom",
-    },
-    x: 500 
-},
-{
-    x: 0,
-    duration: 1.5,
-    ease: Bounce.easeOut 
-})
-
-
 //Balloon animation
 $(window).scroll(function () {
     const scroll = $(window).scrollTop();
@@ -142,6 +152,7 @@ window.onload = function() {
                 'template_KEY',
                 templateVariables,
             );
+
     
             fName = '';
             lName = '';

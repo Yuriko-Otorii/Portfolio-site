@@ -1,40 +1,8 @@
 window.addEventListener('load', () => {
-  //Letter display 
+  //Initial balloon display 
   const timeline = gsap.timeline();
 
-  function topTextAnimetion(){
-    document.querySelectorAll('.letter').forEach((item, i) => {
-      gsap.from(item, {
-        opacity: 0,
-        rotation: -100,
-        yPercent: -150,
-        ease: "bounce",
-        duration: 0.5,
-        delay: i * 0.1,
-      });
-    })
-  }
-
-  function balloonAnimation(){
-    gsap.from(".balloon-wrapper", {
-      duration: 1,
-      y: 50, 
-      opacity: 0,
-      ease: "power2.out"
-    })
-  }
-  
-  function bubbleAnimation(){
-    gsap.from(".bubble-wrapper", {
-      duration: 1,
-      y: 50, 
-      opacity: 0,
-      ease: "power2.out"
-    })
-  }
-
   timeline
-  .add(topTextAnimetion())
   .from(".balloon-wrapper", {
     duration: 1,
     y: 50, 
@@ -47,18 +15,6 @@ window.addEventListener('load', () => {
     opacity: 0,
     ease: "power2.out"
   })
-
-  
-
-
-
- 
-
-
-
-  
-  
-
 
 
   //Eye changing
@@ -120,6 +76,13 @@ window.addEventListener('load', () => {
                 //right
                 rightEyeSetX(17);
                 rightEyeSetY(-3.5); 
+            }else if(windowSize >= 768){
+                //left
+                leftEyeSetX(0);
+                leftEyeSetY(-4.5);
+                //right
+                rightEyeSetX(20);
+                rightEyeSetY(-5); 
             }else{
                 //left
                 leftEyeSetX(0);
@@ -134,6 +97,13 @@ window.addEventListener('load', () => {
         if(mouse.y > balloonPosY + balloonWidth){
             //Eyes go down right
             if(windowSize >= 1024){
+                //left
+                leftEyeSetX(-2);
+                leftEyeSetY(19);
+                //right
+                rightEyeSetX(13);
+                rightEyeSetY(19); 
+            }else if(windowSize >= 768){
                 //left
                 leftEyeSetX(-2);
                 leftEyeSetY(19);
@@ -160,6 +130,13 @@ window.addEventListener('load', () => {
                 //right
                 rightEyeSetX(1);
                 rightEyeSetY(18);
+            }else if(windowSize >= 768){
+                //left
+                leftEyeSetX(-15);
+                leftEyeSetY(18);
+                //right
+                rightEyeSetX(3);
+                rightEyeSetY(18); 
             }else{
                 //left
                 leftEyeSetX(-12);
@@ -174,6 +151,13 @@ window.addEventListener('load', () => {
           if(mouse.y > 0 && mouse.y < balloonPosY + balloonWidth){
             //Eyes go up left
             if(windowSize >= 1024){
+                //left
+                leftEyeSetX(-17);
+                leftEyeSetY(-5.5);
+                //right
+                rightEyeSetX(1);
+                rightEyeSetY(-5.5);
+            }else if(windowSize >= 768){
                 //left
                 leftEyeSetX(-17);
                 leftEyeSetY(-5.5);
@@ -200,6 +184,13 @@ window.addEventListener('load', () => {
                 //right
                 rightEyeSetX(7);
                 rightEyeSetY(-10);
+            }else if(windowSize >= 768){
+                //left
+                leftEyeSetX(-7);
+                leftEyeSetY(-10);
+                //right
+                rightEyeSetX(7);
+                rightEyeSetY(-10);
             }else{
                 //left
                 leftEyeSetX(-5.5);
@@ -214,6 +205,13 @@ window.addEventListener('load', () => {
             if(mouse.y > balloonPosY && mouse.y < balloonPosY + balloonWidth){
                 //Eyes go right
                 if(windowSize >= 1024){
+                    //left
+                    leftEyeSetX(2);
+                    leftEyeSetY(3);
+                    //right
+                    rightEyeSetX(20);
+                    rightEyeSetY(3);
+                }else if(windowSize >= 768){
                     //left
                     leftEyeSetX(2);
                     leftEyeSetY(3);
@@ -240,6 +238,13 @@ window.addEventListener('load', () => {
                 //right
                 rightEyeSetX(7);
                 rightEyeSetY(20);
+            }else if(windowSize >= 768){
+                //left
+                leftEyeSetX(-7);
+                leftEyeSetY(20);
+                //right
+                rightEyeSetX(7);
+                rightEyeSetY(20);
             }else{
                 //left
                 leftEyeSetX(-5.5);
@@ -254,12 +259,19 @@ window.addEventListener('load', () => {
           if(mouse.y > balloonPosY && mouse.y < balloonPosY + balloonWidth){
               //Eyes go left
               if(windowSize >= 1024){
-                  //left
-                  leftEyeSetX(-20);
-                  leftEyeSetY(3);
-                  //right
-                  rightEyeSetX(-1.5);
-                  rightEyeSetY(3);                  
+                //left
+                leftEyeSetX(-20);
+                leftEyeSetY(3);
+                //right
+                rightEyeSetX(-1.5);
+                rightEyeSetY(3);           
+          }else if(windowSize >= 768){       
+                //left
+                leftEyeSetX(-20);
+                leftEyeSetY(3);
+                //right
+                rightEyeSetX(-1.5);
+                rightEyeSetY(3);  
             }else{
                 //left
                 leftEyeSetX(-13);

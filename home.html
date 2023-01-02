@@ -40,13 +40,20 @@
   <body class="home-body" id="page-top">
     <div class="header-container">
       <div class="title-container">
-        <div class="name-container">
-          <h1 class="full-name">Yuriko Otorii</h1>
-          <a href="" target="_blank"
-            ><i class="fa-brands fa-linkedin fa-lg title-icon"></i
-          ></a>
-        </div>
+        <h1 class="full-name">Yuriko Otorii</h1>
         <h4 class="occupation">Front-end developer</h4>
+        <div class="icons-container">
+          <a
+            href="https://github.com/Yuriko-Otorii"
+            class="github-link"
+            target="_blank"
+          >
+            <i class="fa-brands fa-github fa-lg title-github-icon"></i>
+          </a>
+          <a href="" target="_blank">
+            <i class="fa-brands fa-linkedin fa-lg title-linkedin-icon"></i>
+          </a>
+        </div>
       </div>
       <nav class="header-nav">
         <a href="#projects" class="header-nav-item"><li>Projects</li></a>
@@ -72,61 +79,91 @@
               <div class="display-description">
                 <div class="project-img-container">
                   <a href="https://bookmark-app-theta.vercel.app/Home">
-                    <p class="ptoject-title">Bookmark App</p>
+                    <p class="project-title">Bookmark manager</p>
                   </a>
                 </div>
                 <div class="description-container">
-                  <a
-                    href="https://github.com/Yuriko-Otorii"
-                    class="github-link"
-                    target="_blank"
-                  >
-                    <div class="project-title-container">
-                      <h3 class="project-title">-- Project 1 --</h3>
-                      <i class="fa-brands fa-github fa-lg title-icon"></i>
+                  <div class="project-title-container">
+                    <h3 class="project-title">Bookmark manager</h3>
+                  </div>
+
+                  <div class="mobile-project-img-container">
+                    <a href="https://bookmark-app-theta.vercel.app/Home">
+                      <p class="project-title">Bookmark manager</p>
+                    </a>
+                  </div>
+
+                  <div class="discription-container">
+                    <p class="project-description">
+                      A react app which managing web articles sorting by
+                      categories. This App uses graphQL to store tha data and
+                      implemented CRUD functions. I learnt how the graphQL works
+                      through maiking this app.
+                    </p>
+                    <div class="skill-icons">
+                      <i class="fa-brands fa-react"></i>
+                      <i class="fa-brands fa-square-js"></i>
+                      <i class="fa-brands fa-sass"></i>
                     </div>
-                  </a>
-                  <p class="project-description">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et
-                    quis velit iure, odio fugit distinctio perspiciatis expedita
-                    ipsum commodi fugiat.
-                  </p>
-                  <div class="skill-icons">
-                    <i class="fa-brands fa-react"></i>
-                    <i class="fa-brands fa-square-js"></i>
-                    <i class="fa-brands fa-sass"></i>
+                  </div>
+                  <div class="github-icon-bubble">
+                    <a
+                      href="https://github.com/Yuriko-Otorii"
+                      class="github-link"
+                      target="_blank"
+                    >
+                      <i class="fa-brands fa-github fa-lg title-icon"></i>
+                      <p class="check-github">Check the code!</p>
+                    </a>
                   </div>
                 </div>
               </div>
             </li>
             <li class="project-two">
               <div class="display-description">
+                <div class="description-container">
+                  <div class="project-title-container">
+                    <h3 class="project-title">Dog picture collection</h3>
+                  </div>
+
+                  <div class="mobile-project-img-container">
+                    <a href="https://bookmark-app-theta.vercel.app/Home">
+                      <p class="project-title">App</p>
+                    </a>
+                  </div>
+
+                  <div class="discription-container">
+                    <p class="project-description">
+                      SNS-ish React app which users can post and find dog's
+                      pictures. In finding page, the state is managed by React
+                      tool kit and the picture data is fetched from Dog API.
+                      Post data are managed by Supabase. Managing API by using
+                      redux thunk with RTK was quite challenging.
+                    </p>
+                    <div class="skill-icons">
+                      <i class="fa-brands fa-react"></i>
+                      <img
+                        alt="Typescript icon"
+                        src="./images/typescript-icon.png"
+                      />
+                      <i class="fa-brands fa-sass"></i>
+                    </div>
+                  </div>
+                  <div class="github-icon-bubble">
+                    <a
+                      href="https://github.com/Yuriko-Otorii"
+                      class="github-link"
+                      target="_blank"
+                    >
+                      <i class="fa-brands fa-github fa-lg title-icon"></i>
+                      <p class="check-github">Check the code!</p>
+                    </a>
+                  </div>
+                </div>
                 <div class="project-img-container">
                   <a href="https://bookmark-app-theta.vercel.app/Home">
                     <p class="ptoject-title">App</p>
                   </a>
-                </div>
-                <div class="description-container">
-                  <a
-                    href="https://github.com/Yuriko-Otorii"
-                    class="github-link"
-                    target="_blank"
-                  >
-                    <div class="project-title-container">
-                      <h3 class="project-title">-- Project 2 --</h3>
-                      <i class="fa-brands fa-github fa-lg title-icon"></i>
-                    </div>
-                  </a>
-                  <p class="project-description">
-                    React App Lorem ipsum dolor, sit amet consectetur
-                    adipisicing elit. Magnam tempore dolore consectetur odit ut,
-                    minus vel sint assumenda rem maiores!
-                  </p>
-                  <div class="skill-icons">
-                    <i class="fa-brands fa-react"></i>
-                    <i class="fa-brands fa-square-js"></i>
-                    <i class="fa-brands fa-sass"></i>
-                  </div>
                 </div>
               </div>
             </li>
@@ -138,15 +175,29 @@
         <h1>About me</h1>
         <div class="section-contents">
           <div class="resume-container">
-            <a href="./images/resume-pdf.pdf" target="_blank">
+            <a
+              href="./images/resume-pdf.pdf"
+              target="_blank"
+              class="resume-atag"
+            >
               <img
                 class="resume-img"
                 src="./images/Resume.png"
                 alt="Resume image"
               />
+              <i class="fa-light fa-hand-pointer"></i>
+            </a>
+            <a
+              href="./images/resume-pdf.pdf"
+              class="mobile-read-resume"
+              target="_blank"
+              ><button class="mobile-read-resume-btn">Read resume</button>
             </a>
           </div>
           <div class="aboutMe-right-side">
+            <div class="greeting-icon-container">
+              <h3>Hi, I am Yuriko!</h3>
+            </div>
             <p>
               A co-op student who is eager to work as a front-end developer.
               Passionate about making people's lives or works easier through
@@ -157,9 +208,7 @@
               href="./images/resume-pdf.pdf"
               class="read-resume"
               target="_blank"
-            ><button class="read-resume-btn">
-              Read resume
-            </button>
+              ><button class="read-resume-btn">Read resume</button>
             </a>
           </div>
         </div>
@@ -169,18 +218,6 @@
         <h1>Contact</h1>
         <div class="section-contents">
           <p class="contact-text">I look forwad to hering from you!</p>
-          <div class="icon-container">
-            <div class="linkedin-icon">
-              <a href="" target="_blank">
-                <i class="fa-brands fa-linkedin fa-lg"></i>
-              </a>
-              <p class="toolchip-text1">Get in touch from LinkedIn</p>
-            </div>
-            <div class="email-icon">
-              <i class="fa-regular fa-envelope"></i>
-              <p class="toolchip-text2">Copy E-mail from here</p>
-            </div>
-          </div>
           <div class="contact-section-container">
             <form action="mailto:snnp.ad.pnts@gmail.com" class="contact-form">
               <table>
@@ -219,12 +256,27 @@
                 </tr>
                 <tr>
                   <th><label for="message">Message</label></th>
-                  <td><textarea name="" id="message" rows="6" placeholder=" Message"></textarea></td>
+                  <td>
+                    <textarea
+                      name=""
+                      id="message"
+                      rows="6"
+                      placeholder=" Message"
+                    ></textarea>
+                  </td>
                 </tr>
               </table>
-              <button type="submit" class="send-btn">Send</button>
             </form>
-              <!-- <div class="email-copy-container">
+            <div class="btn-container">
+              <button class="send-btn">Send</button>
+              <p>or</p>
+              <a href="mailto:snnp.ad.pnts@gmail.com">
+                <button class="mailer-open-btn">
+                  <i class="fa-regular fa-envelope"></i> Open your mailer
+                </button>
+              </a>
+            </div>
+            <!-- <div class="email-copy-container">
                 <p class="email-title-msg">Copy email from here.</p>
                 <input
                   class="email-address"

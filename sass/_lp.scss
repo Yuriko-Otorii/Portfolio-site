@@ -3,30 +3,10 @@
 @use './config/common-setting' as *;
 
 
-body{
+.lp-body{
     font-family: $home-font;
     color: $dark-gray;
     position: relative;
-
-    .top-bottom-text{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        text-align: center;
-        position: absolute;
-        top: 0;
-        width: 100vw;
-        height: 100vh;
-        padding: .5rem 0;
-        div{
-            font-size: 2.8rem;
-            font-weight: bold;
-        }
-        .top-text, .bottom-text{
-            display: flex;
-            align-self: center;
-        }
-    }
     .cursor{        
         z-index: 1001;
         position: absolute;
@@ -34,9 +14,11 @@ body{
         left: 0; 
         transform: translate(-50%,-50%);
     }
+    
     .balloon-wrapper{
         width: 100vw;
         height: 100vh;
+        animation: floating 1s infinite ease-in-out .8s alternate;
         @include flexColumnCenter();
         .balloon-body{
             width: 140px;
@@ -121,7 +103,7 @@ body{
     
     .bubble-wrapper{
         position: absolute;
-        top: 18%;
+        top: 20%;
         right: 2%;
         .bubble{
             width: 7rem;
@@ -154,11 +136,34 @@ body{
             }
         }
     }  
+    .top-area{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 25vh;
+        background: linear-gradient($main-color, white);
+        @include flexColumnCenter();
+    }
+    .bottom-area{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 35vh;
+        background: linear-gradient(white, $main-color) ;
+        @include flexColumnCenter();
+        h1{
+            font-size: 2.5rem;
+        }
+        p{
+            font-size: 1.4rem;
+        }
+    }
 }
 
 
 @media screen and (min-width: 768px) {
-    body{
+    .lp-body{
+        height: 100vh;
         .top-bottom-text{
             padding: 2rem 3rem;
             p{
@@ -173,43 +178,79 @@ body{
         }
         .balloon-wrapper{
             .balloon-body{
+                width: 200px;
+                height: 200px;
                 .eyes-wrapper{
                     .left-eye-outline{
+                        width: 60px;
+                        height: 70px;
                         .left-eyeball{
+                            width: 30px;
+                            height: 30px;
                         }
                         .changed-left-eyeball{
+                            left: 40%;
+                            width: 30px;
                             &::after{
-                                @include changed-eyeBalls(45deg, -7.5px, 22%);
+                                @include changed-eyeBalls(45deg, -10.5px, 22%);
+                                width: 25px;
                             }
                             &::before{
-                                @include changed-eyeBalls(-45deg, 5.5px, 22%);
+                                @include changed-eyeBalls(-45deg, 8.5px, 22%);
+                                width: 25px;
                             }
                         }
                     }
                     .right-eye-outline{
+                        width: 60px;
+                        height: 70px;
                         .right-eyeball{
+                            width: 30px;
+                            height: 30px;
                         }
                         .changed-right-eyeball{
+                            width: 30px;
                             &::after{
-                                @include changed-eyeBalls(-45deg, -7.5px, -22%);
+                                @include changed-eyeBalls(-45deg, -9.5px, -22%);
+                                width: 25px;
                             }
                             &::before{
-                                @include changed-eyeBalls(45deg, 5.5px, -22%);
+                                @include changed-eyeBalls(45deg, 7.5px, -22%);
+                                width: 25px;
                             }                
                         }
                     }
                 }
             }
+            .balloon-string{
+                height: 80px;
+            }
         }
+
         .bubble-wrapper{
-            top: 10%;
-            right: 25%;
+            top: 20%;
+            right: 20%;
+            .bubble{
+                width: 9rem;
+                height: 6rem;
+                .bubble-text{
+                    font-size: 1.8rem;
+                }
+                .small-bubbles{
+                    width: 25px;
+                    height: 25px;
+                    &::after{
+                        width: 13px;
+                        height: 13px;
+                    }
+                }
+            }
         }
     }
 }
 
 @media screen and (min-width: 1024px) {
-    body{
+    .lp-body{
         .top-bottom-text{
             .letter{
                 font-size: 4rem;
@@ -217,8 +258,8 @@ body{
         }
         .balloon-wrapper{
             .balloon-body{
-                width: 200px;
-                height: 200px;
+                width: 180px;
+                height: 180px;
                 .eyes-wrapper{
                     top: 45%;                    
                     transform: translate(-50%, -50%);
@@ -233,7 +274,7 @@ body{
                         .changed-left-eyeball{
                             width: 35px;
                             top: 45%;
-                            left: 23%;
+                            left: 25%;
                             border-width: 2px;
                             &::after{
                                 @include changed-eyeBalls(45deg, -11px, 30%);
@@ -285,8 +326,8 @@ body{
 
 
         .bubble-wrapper{
-            top: 5%;
-            right: 25%;
+            top: 10%;
+            right: 20%;
             .bubble{
                 width: 150px;
                 height: 100px;
@@ -297,18 +338,20 @@ body{
             .small-bubbles{
                 width: 30px;
                 height: 30px;
-                bottom: -20%;
-                left: -10%;
                 &::after{
                     content: '';
-                    width: 10px;
-                    height: 10px;
-                    border: 2px solid $dark-gray;
-                    border-radius: 50%;
-                    position: absolute;
-                    bottom: -90%;
-                    left: -60%;
+                    width: 15px;
+                    height: 15px;
                 }
+            }
+        }
+        .bottom-area{
+            height: 30vh;
+            h1{
+                font-size: 3rem;
+            }
+            p{
+                font-size: 1.8rem;
             }
         }
     }

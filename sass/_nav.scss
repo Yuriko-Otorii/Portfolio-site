@@ -3,18 +3,18 @@
 @use './config/common-setting' as *;
 
 .header-nav{
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
     display: flex;
-    margin-bottom: 4rem;
+    flex-direction: column;
+    margin: 2rem auto;
     align-items: center;
     text-align: end;
     line-height: 2;
     cursor: pointer;
     .header-nav-item{
         color: white;
-        font-size: 2rem;
-        margin: 1rem 3rem;
+        font-size: 1.5rem;
         &:hover{
             transform: scale(1.2);
         }
@@ -30,16 +30,11 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #dddddd24;
-    opacity: 0;
+    height: 15vh;
+    background: linear-gradient($main-dark-color, transparent) ;
     z-index: 10;
     transition: .5s;
-    &:hover{
-        background-color: #dddddd63;
-        .main-nav-item{
-            opacity: 1;
-        }
-    }
+    opacity: 0;
     &.upMove{
         animation: FrameInAnimation 0.5s forwards;
     }
@@ -48,16 +43,31 @@
     }
     .main-nav-item{
         color: white;
-        opacity: .5;
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-weight: bold;
-        margin: 1rem 3rem;
+        margin: 1rem 1.5rem;
         transition: .5s;
         &:hover{
             transform: scale(1.2);
         }
         li{
             list-style: none;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .header-nav{
+        margin: 1rem auto;
+        .header-nav-item{
+            font-size: 1.7rem;
+        }
+    }
+    .main-nav{
+        justify-content: flex-start;
+        .main-nav-item{
+            font-size: 1.2rem;
+            margin: 1rem 1rem;
         }
     }
 }
